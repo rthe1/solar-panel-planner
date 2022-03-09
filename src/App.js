@@ -1,23 +1,30 @@
 import logo from './logo.svg';
 import './App.css';
+import CalculatorSide from './components/CalculatorSide';
+import DisplaySide from './components/DisplaySide';
+import DisplayWriteUp from './components/DisplayWriteUp';
+import { FormDisplayContextProvider } from './context/FormDisplayContext';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+
+      <FormDisplayContextProvider>
+
+      <div class ="calc-side">
+      <CalculatorSide/>
+      </div>
+
+      <div class ="display-side">
+      <DisplaySide/>
+      </div>
+
+      <div class ="display-writeup">
+      <DisplayWriteUp/>
+      </div>
+
+      </FormDisplayContextProvider>
+
     </div>
   );
 }

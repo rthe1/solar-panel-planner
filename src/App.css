@@ -1,4 +1,7 @@
 .App {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
   text-align: center;
 }
 
@@ -35,4 +38,12 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.calc-side{
+
+}
+
+#display-side{
+
 }
