@@ -22,36 +22,13 @@ export default function ResponsiveStack() {
 
   const { roofLength, width } = useContext(FormDisplayContext);
 
-  if (roofLength >= 200 && width >= 200) {
-    return (
-      <div>
-        STATS FOR 200 X 200
-      </div>
-    )
-  }
-
-
-  if (roofLength >= 100 && width >= 100) {
-    return (
-      <div>
-        STATS FOR 100 X 100
-      </div>
-    )
-  }
-
-
-
-
-
+  let tiles = Math.floor(roofLength/31.5) * Math.floor(width/31.5) 
+  tiles = tiles - Math.floor(width/31.5)
+  
   return (
     <div>
-      <Stack
-        direction={{ xs: 'column', sm: 'row' }}
-        spacing={{ xs: 1, sm: 2, md: 4 }}
-      >
-        <Item>Item 1</Item>
-        <Item>Item 2</Item>
-        <Item>Item 3</Item>
+      <Stack>
+      {tiles}
       </Stack>
     </div>
   );

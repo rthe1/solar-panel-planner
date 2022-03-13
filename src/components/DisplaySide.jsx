@@ -13,8 +13,8 @@ const Item = styled(Paper)(({ theme }) => ({
   padding: theme.spacing(1),
   textAlign: 'center',
   color: theme.palette.text.secondary,
-  height: 31.5,
-  width: 31.5,
+  height: 10,
+  width: 10,
   margin: 2,
 }));
 
@@ -22,17 +22,17 @@ export default function ResponsiveStack() {
 
   const { roofLength, width } = useContext(FormDisplayContext);
 
-  let rows = Math.floor(width / 31.5)
+  let rows = Math.floor(width / 31.5) 
 
   let row = [];
 
-  let columns = Math.floor(roofLength / 31.5)
+  let columns = Math.floor(roofLength / 31.5) - 1
 
   let column = [];
 
 
   for (let i = 0; i < columns; i++) {
-    column.push(<div><Item>Item</Item></div>)
+    column.push(<div><Item>*</Item></div>)
   }
 
   for (let i = 0; i < rows; i++) {
@@ -46,5 +46,7 @@ export default function ResponsiveStack() {
     </div>)
   }
 
-  return (<div>{row}</div>);
+  return (<div>
+    <div>{row}</div>
+  </div>);
 }
