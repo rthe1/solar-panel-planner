@@ -32,7 +32,11 @@ export default function ResponsiveStack() {
 
 
   for (let i = 0; i < columns; i++) {
+
+// IF i % NUMBER = 0 { put a, b or c}
+
     column.push(<div><Item>*</Item></div>)
+
   }
 
   for (let i = 0; i < rows; i++) {
