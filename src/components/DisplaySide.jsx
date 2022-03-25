@@ -22,35 +22,109 @@ export default function ResponsiveStack() {
 
   const { roofLength, width } = useContext(FormDisplayContext);
 
-  let rows = Math.floor(width / 31.5) 
-
-  let row = [];
-
-  let columns = Math.floor(roofLength / 31.5) - 1
-
-  let column = [];
+  let alphaRows = Math.floor(width / 31.5) 
+  let alphaRow = [];
+  let alphaColumns = Math.floor(roofLength / 31.5) - 1
+  let alphaColumn = [];
 
 
-  for (let i = 0; i < columns; i++) {
+  for (let i = 0; i < alphaColumns; i++) {
 
-// IF i % NUMBER = 0 { put a, b or c}
+  // IF i % NUMBER = 0 { put a, b or c}
 
-    column.push(<div><Item>*</Item></div>)
-
+  if(i % 7 === 0){
+    alphaColumn.push(<div><Item>C</Item></div>)
+  } else {
+    alphaColumn.push(<div><Item>A</Item></div>)
+  }
   }
 
-  for (let i = 0; i < rows; i++) {
-    row.push(<div>
+  for (let i = 0; i < alphaRows; i++) {
+    alphaRow.push(<div>
       <Stack
         direction={{ xs: 'column', sm: 'row' }}
         spacing={{ xs: 1, sm: 2, md: 4 }}
       >
-        {column}
+        {alphaColumn}
       </Stack>
     </div>)
   }
 
+///////
+let betaWidth = width
+if (Math.floor(betaWidth / 31.5) % 2 !== 0) {
+  betaWidth = betaWidth - 31.5
+}
+
+let betaRows = Math.floor(betaWidth / 31.5) 
+let betaRow = [];
+let betaColumns = Math.floor(roofLength / 31.5)
+let betaColumn = [];
+
+for (let i = 0; i < betaColumns; i++) {
+
+// IF i % NUMBER = 0 { put a, b or c}
+
+if(i % 7 === 0){
+  betaColumn.push(<div><Item>C</Item></div>)
+} else {
+  betaColumn.push(<div><Item>A</Item></div>)
+}
+}
+
+for (let i = 0; i < betaRows; i++) {
+  betaRow.push(<div>
+    <Stack
+      direction={{ xs: 'column', sm: 'row' }}
+      spacing={{ xs: 1, sm: 2, md: 4 }}
+    >
+      {betaColumn}
+    </Stack>
+  </div>)
+}
+
+
+///////
+
+let gammaWidth = width
+  if (Math.floor(gammaWidth / 31.5) % 2 !== 0) {
+    gammaWidth = gammaWidth - 31.5
+  }
+
+let gammaRows = Math.floor(gammaWidth / 31.5) 
+let gammaRow = [];
+let gammaColumns = Math.floor(roofLength / 31.5)
+let gammaColumn = [];
+
+for (let i = 0; i < gammaColumns; i++) {
+
+// IF i % NUMBER = 0 { put a, b or c}
+
+if(i % 7 === 0){
+  gammaColumn.push(<div><Item>C</Item></div>)
+} else {
+  gammaColumn.push(<div><Item>A</Item></div>)
+}
+}
+
+for (let i = 0; i < gammaRows; i++) {
+  gammaRow.push(<div>
+    <Stack
+      direction={{ xs: 'column', sm: 'row' }}
+      spacing={{ xs: 1, sm: 2, md: 4 }}
+    >
+      {gammaColumn}
+    </Stack>
+  </div>)
+}
+
+
   return (<div>
-    <div>{row}</div>
+    <h2>Alpha Chart</h2>
+    <div>{alphaRow}</div>
+    <h2>Beta Chart</h2>
+    <div>{betaRow}</div>
+    <h2>Gamma Chart</h2>
+    <div>{gammaRow}</div>
   </div>);
 }
