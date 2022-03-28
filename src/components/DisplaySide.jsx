@@ -43,7 +43,7 @@ export default function ResponsiveStack() {
     alphaRow.push(<div>
       <Stack
         direction={{ xs: 'column', sm: 'row' }}
-        spacing={{ xs: 1, sm: 2, md: 4 }}
+        spacing={{ xs: 1, sm: 1, md: 1 }}
       >
         {alphaColumn}
       </Stack>
@@ -76,7 +76,7 @@ for (let i = 0; i < betaRows; i++) {
   betaRow.push(<div>
     <Stack
       direction={{ xs: 'column', sm: 'row' }}
-      spacing={{ xs: 1, sm: 2, md: 4 }}
+      spacing={{ xs: 1, sm: 1, md: 1 }}
     >
       {betaColumn}
     </Stack>
@@ -111,7 +111,7 @@ for (let i = 0; i < gammaRows; i++) {
   gammaRow.push(<div>
     <Stack
       direction={{ xs: 'column', sm: 'row' }}
-      spacing={{ xs: 1, sm: 2, md: 4 }}
+      spacing={{ xs: 1, sm: 1, md: 1 }}
     >
       {gammaColumn}
     </Stack>
