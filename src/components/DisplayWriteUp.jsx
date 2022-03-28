@@ -31,8 +31,6 @@ function createData(Width, Alpha, Beta, Gamma) {
   return { Width, Alpha, Beta, Gamma };
 }
 
-
-
 const useStyles = makeStyles({
   table: {
     minWidth: 700,
@@ -43,6 +41,8 @@ export default function CustomizedTables() {
 
   const { roofLength, width } = useContext(FormDisplayContext);
 
+  //////////////////////
+
   let alphaWidth = width
   let betaWidth = width
   let gammaWidth = width
@@ -52,13 +52,17 @@ export default function CustomizedTables() {
   let gammaRoofLength = roofLength
 
 
-  let alphaTiles = Math.floor(roofLength / 31.5) * Math.floor(alphaWidth / 31.5)
+  let alphaTiles = Math.floor(alphaRoofLength / 31.5) * Math.floor(alphaWidth / 31.5)
   alphaTiles = alphaTiles - Math.floor(alphaWidth / 31.5)
   let alphaPowerInWatts = alphaTiles * 10
   let alphaTilesInLoop = Math.floor(alphaWidth / 31.5) * 2
   let alphaVoltage = alphaTilesInLoop * 2
   let alphaCurrent = alphaPowerInWatts / alphaVoltage
-
+  let alphaNumOfLoops = Math.floor((alphaRoofLength/ 31.5) / 2)
+  let alphaAcount = Math.floor((alphaWidth/ 31.5) * 2);
+  let alphaBcount = 0;
+  let alphaCcount = Math.floor(2 * alphaWidth / 31.5 - 2) * alphaNumOfLoops;
+  /////////////////////
 
   let betaTiles = 0;
   if (Math.floor(betaWidth / 31.5) % 2 !== 0) {
@@ -72,8 +76,11 @@ export default function CustomizedTables() {
   let betaTilesInLoop = Math.floor(betaWidth / 31.5) * 3
   let betaVoltage = betaTilesInLoop * 2
   let betaCurrent = betaPowerInWatts / betaVoltage
+  let betaAcount = (betaWidth + 1) * betaWidth;
+  let betaBcount = (betaWidth - 1) * betaWidth;
+  let betaCcount = betaWidth * betaWidth;
 
-
+  /////////////////////
 
   let gammaTiles = 0;
   if (Math.floor(gammaWidth / 31.5) % 2 !== 0) {
@@ -89,12 +96,15 @@ export default function CustomizedTables() {
   let gammaCurrent = gammaPowerInWatts / gammaVoltage
 
   const rows = [
-    createData('Tile in one loop', alphaTilesInLoop,betaTilesInLoop,gammaTilesInLoop),
-    createData('Voltage', alphaVoltage,betaVoltage,gammaVoltage),
+    createData('Tile in one loop', alphaTilesInLoop, betaTilesInLoop, gammaTilesInLoop),
+    createData('Voltage', alphaVoltage, betaVoltage, gammaVoltage),
     createData('Area Utilization',),
     createData('Power In Watt', alphaPowerInWatts, betaPowerInWatts, gammaPowerInWatts),
     createData('Current(A)', alphaCurrent, betaCurrent, gammaCurrent),
     createData('Total of tiles created', alphaTiles, betaTiles, gammaTiles),
+    createData('Solar A', alphaAcount, betaAcount, gammaPowerInWatts),
+    createData('Solar B', alphaBcount, betaBcount, gammaPowerInWatts),
+    createData('Solar C', alphaCcount, betaCcount, gammaPowerInWatts),
   ];
 
   const classes = useStyles();

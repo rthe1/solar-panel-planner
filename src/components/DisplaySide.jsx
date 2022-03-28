@@ -33,9 +33,9 @@ export default function ResponsiveStack() {
   // IF i % NUMBER = 0 { put a, b or c}
 
   if(i % 7 === 0){
-    alphaColumn.push(<div><Item>C</Item></div>)
+    alphaColumn.push(<div><Item> c </Item></div>)
   } else {
-    alphaColumn.push(<div><Item>A</Item></div>)
+    alphaColumn.push(<div><Item> a </Item></div>)
   }
   }
 
@@ -66,9 +66,9 @@ for (let i = 0; i < betaColumns; i++) {
 // IF i % NUMBER = 0 { put a, b or c}
 
 if(i % 7 === 0){
-  betaColumn.push(<div><Item>C</Item></div>)
+  betaColumn.push(<div><Item> + </Item></div>)
 } else {
-  betaColumn.push(<div><Item>A</Item></div>)
+  betaColumn.push(<div><Item> + </Item></div>)
 }
 }
 
@@ -101,9 +101,9 @@ for (let i = 0; i < gammaColumns; i++) {
 // IF i % NUMBER = 0 { put a, b or c}
 
 if(i % 7 === 0){
-  gammaColumn.push(<div><Item>C</Item></div>)
+  gammaColumn.push(<div><Item> + </Item></div>)
 } else {
-  gammaColumn.push(<div><Item>A</Item></div>)
+  gammaColumn.push(<div><Item> + </Item></div>)
 }
 }
 
