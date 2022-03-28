@@ -37,6 +37,8 @@ const useStyles = makeStyles({
   },
 });
 
+const tilePrice = 20;
+
 export default function CustomizedTables() {
 
   const { roofLength, width } = useContext(FormDisplayContext);
@@ -76,9 +78,10 @@ export default function CustomizedTables() {
   let betaTilesInLoop = Math.floor(betaWidth / 31.5) * 3
   let betaVoltage = betaTilesInLoop * 2
   let betaCurrent = betaPowerInWatts / betaVoltage
-  let betaAcount = (betaWidth + 1) * betaWidth;
-  let betaBcount = (betaWidth - 1) * betaWidth;
-  let betaCcount = betaWidth * betaWidth;
+  let betaNumOfLoops = Math.floor((betaRoofLength/ 31.5) / 3)
+  let betaAcount = Math.floor((betaWidth / 31.5) + 1) * betaNumOfLoops;
+  let betaBcount = Math.floor((betaWidth / 31.5) - 1) * betaNumOfLoops;
+  let betaCcount = Math.floor((betaWidth / 31.5)) * betaNumOfLoops;
 
   /////////////////////
 
@@ -94,6 +97,11 @@ export default function CustomizedTables() {
   let gammaTilesInLoop = Math.floor(gammaWidth / 31.5) * 5
   let gammaVoltage = gammaTilesInLoop * 2
   let gammaCurrent = gammaPowerInWatts / gammaVoltage
+  let gammaNumOfLoops = Math.floor((gammaRoofLength/ 31.5) / 5)
+  let gammaAcount = Math.floor((gammaWidth / 31.5) * 2) * gammaNumOfLoops;
+  let gammaBcount = Math.floor((gammaWidth / 31.5) - 1) * 2 * gammaNumOfLoops;
+  let gammaCcount = Math.floor((gammaWidth / 31.5) + 2) * gammaNumOfLoops;
+
 
   const rows = [
     createData('Tile in one loop', alphaTilesInLoop, betaTilesInLoop, gammaTilesInLoop),
@@ -102,9 +110,10 @@ export default function CustomizedTables() {
     createData('Power In Watt', alphaPowerInWatts, betaPowerInWatts, gammaPowerInWatts),
     createData('Current(A)', alphaCurrent, betaCurrent, gammaCurrent),
     createData('Total of tiles created', alphaTiles, betaTiles, gammaTiles),
-    createData('Solar A', alphaAcount, betaAcount, gammaPowerInWatts),
-    createData('Solar B', alphaBcount, betaBcount, gammaPowerInWatts),
-    createData('Solar C', alphaCcount, betaCcount, gammaPowerInWatts),
+    createData('Solar A', alphaAcount, betaAcount, gammaAcount),
+    createData('Solar B', alphaBcount, betaBcount, gammaBcount),
+    createData('Solar C', alphaCcount, betaCcount, gammaCcount),
+
   ];
 
   const classes = useStyles();
