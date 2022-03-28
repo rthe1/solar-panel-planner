@@ -38,6 +38,10 @@ const useStyles = makeStyles({
 });
 
 const tilePrice = 20;
+const instructionGeneration = 10;
+const tax = .12;
+
+
 
 export default function CustomizedTables() {
 
@@ -60,10 +64,15 @@ export default function CustomizedTables() {
   let alphaTilesInLoop = Math.floor(alphaWidth / 31.5) * 2
   let alphaVoltage = alphaTilesInLoop * 2
   let alphaCurrent = alphaPowerInWatts / alphaVoltage
-  let alphaNumOfLoops = Math.floor((alphaRoofLength/ 31.5) / 2)
-  let alphaAcount = Math.floor((alphaWidth/ 31.5) * 2);
+  let alphaNumOfLoops = Math.floor((alphaRoofLength / 31.5) / 2)
+  let alphaAcount = Math.floor((alphaWidth / 31.5) * 2);
   let alphaBcount = 0;
   let alphaCcount = Math.floor(2 * alphaWidth / 31.5 - 2) * alphaNumOfLoops;
+  let alphaPrice = alphaTiles * tilePrice
+  let alphaSubTotal = alphaPrice + instructionGeneration
+  let alphaTax = alphaSubTotal * tax;
+  let alphaTotalPrice = alphaSubTotal + tax
+
   /////////////////////
 
   let betaTiles = 0;
@@ -78,10 +87,14 @@ export default function CustomizedTables() {
   let betaTilesInLoop = Math.floor(betaWidth / 31.5) * 3
   let betaVoltage = betaTilesInLoop * 2
   let betaCurrent = betaPowerInWatts / betaVoltage
-  let betaNumOfLoops = Math.floor((betaRoofLength/ 31.5) / 3)
+  let betaNumOfLoops = Math.floor((betaRoofLength / 31.5) / 3)
   let betaAcount = Math.floor((betaWidth / 31.5) + 1) * betaNumOfLoops;
   let betaBcount = Math.floor((betaWidth / 31.5) - 1) * betaNumOfLoops;
   let betaCcount = Math.floor((betaWidth / 31.5)) * betaNumOfLoops;
+  let betaPrice = betaTiles * tilePrice
+  let betaSubTotal = betaPrice + instructionGeneration
+  let betaTax = betaSubTotal * tax;
+  let betaTotalPrice = betaSubTotal + tax
 
   /////////////////////
 
@@ -97,10 +110,14 @@ export default function CustomizedTables() {
   let gammaTilesInLoop = Math.floor(gammaWidth / 31.5) * 5
   let gammaVoltage = gammaTilesInLoop * 2
   let gammaCurrent = gammaPowerInWatts / gammaVoltage
-  let gammaNumOfLoops = Math.floor((gammaRoofLength/ 31.5) / 5)
+  let gammaNumOfLoops = Math.floor((gammaRoofLength / 31.5) / 5)
   let gammaAcount = Math.floor((gammaWidth / 31.5) * 2) * gammaNumOfLoops;
   let gammaBcount = Math.floor((gammaWidth / 31.5) - 1) * 2 * gammaNumOfLoops;
   let gammaCcount = Math.floor((gammaWidth / 31.5) + 2) * gammaNumOfLoops;
+  let gammaPrice = gammaTiles * tilePrice
+  let gammaSubTotal = gammaPrice + instructionGeneration
+  let gammaTax = gammaSubTotal * tax;
+  let gammaTotalPrice = gammaSubTotal + tax
 
 
   const rows = [
@@ -113,7 +130,7 @@ export default function CustomizedTables() {
     createData('Solar A', alphaAcount, betaAcount, gammaAcount),
     createData('Solar B', alphaBcount, betaBcount, gammaBcount),
     createData('Solar C', alphaCcount, betaCcount, gammaCcount),
-
+    createData('Total Price', `$${alphaTotalPrice}`, ` $${betaTotalPrice}`, `$${gammaTotalPrice}`),
   ];
 
   const classes = useStyles();
